@@ -8,7 +8,7 @@ function gcroot(a, b) {
     var possibleRoot;
 
     while ((possibleRoot = partsA.shift()) === partsB.shift()) {
-        root = possibleRoot + '/';
+        root = path.join(possibleRoot, path.sep);
     }
 
     return root;
@@ -33,15 +33,16 @@ module.exports = function (grunt) {
         var output = [];
 
         this.files.forEach(function (file) {
-            var webRoot = gcroot(options.include, file.dest);
+            var root = new RegExp('^' + gcroot(options.include, file.dest));
+            var relativePath = file.dest.replace(root, '');
 
             file.src.forEach(function (path) {
                 if (!grunt.file.exists(path)) {
-                    grunt.log.warn('Source file "' + filepath + '" not found.');
+                    grunt.log.warn('Source file "' + path + '" not found.');
                 } else {
-                    output.push(_.compact(['<script', options.attributes, 'src="' + file.dest.replace(new RegExp('^' + webRoot), '') + '"></script>']).join(' '));
+                    output.push(_.compact(['<script', options.attributes, 'src="' + relativePath + '"></script>']).join(' '));
 
-                    // Copy if it's not where it's suppose to be.
+                    // Copy if it's not where it's suppose to be, overwriting existing files.
                     if (path !== file.dest) {
                         grunt.file.copy(path, file.dest);
                     }
