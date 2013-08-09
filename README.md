@@ -1,7 +1,8 @@
 grunt-script-include
 ===
 
-> Include script files individually for debugging.
+> Include script files individually for debugging:
+
 > An alternative to source maps, especially useful for browsers that don't support them.
 
 
