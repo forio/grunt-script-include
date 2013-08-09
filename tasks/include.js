@@ -18,17 +18,12 @@ module.exports = function (grunt) {
     'use strict';
 
     grunt.registerMultiTask('include', 'Include script files individually for debugging.', function () {
+        grunt.config.requires('include');
 
         var options = this.options({
             separator: grunt.util.linefeed,
             attributes: ''
         });
-
-        if (!options.include) {
-            grunt.log.error('options.include is required');
-
-            throw new Error('Invalid config.');
-        }
 
         var output = [];
 
