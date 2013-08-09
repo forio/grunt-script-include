@@ -39,7 +39,7 @@ This option is a required option which specifies the full path to create your `<
 #### attributes
 Type: `String`
 
-This option specifies any attributes to use on your `<script>` tags.  Defaults to ''.
+This option specifies any space separated attributes to use on your `<script>` tags.  Defaults to ''.
 
 ### Usage Examples
 
