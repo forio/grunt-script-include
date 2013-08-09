@@ -38,7 +38,7 @@ module.exports = function (grunt) {
                     output.push(_.compact(['<script', options.attributes, 'src="' + relativePath + '"></script>']).join(' '));
 
                     // Copy if it's not where it's suppose to be, overwriting existing files.
-                    if (path !== file.dest) {
+                    if (!grunt.file.arePathsEquivalent(path, file.dest)) {
                         grunt.file.copy(path, file.dest);
                     }
                 }
