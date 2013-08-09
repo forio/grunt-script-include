@@ -1,5 +1,5 @@
 {
-  "name": "grunt-forio-include",
+  "name": "grunt-script-include",
   "description": "Include script files individually for debugging.",
   "author": {
     "name": "Forio Team",
@@ -7,10 +7,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/forio/grunt-forio-include.git"
+    "url": "https://github.com/forio/grunt-script-include.git"
   },
   "bugs": {
-    "url": "https://github.com/forio/grunt-forio-include/issues"
+    "url": "https://github.com/forio/grunt-script-include/issues"
   },
   "engines": {
     "node": ">=0.8.0"
