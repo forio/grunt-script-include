@@ -1,7 +1,7 @@
 grunt-script-include
 ===
 
-> Include script files individually for debugging:
+> Include script and css files individually for debugging:
 
 > An alternative to source maps, especially useful for browsers that don't support them.
 
@@ -35,12 +35,12 @@ Task targets, files and options may be specified according to the grunt [Configu
 #### include
 Type: `String`
 
-This option is a required option which specifies the full path to create your `<script>` tags in.
+This option is a required option which specifies the full path to create your `<script>`/`<link>` tags in.
 
 #### attributes
 Type: `String`
 
-This option specifies any space separated attributes to use on your `<script>` tags.  Defaults to ''.
+This option specifies any space separated attributes to use on your `<script>`/`<link>` tags.  Defaults to ''.
 
 ### Usage Examples
 

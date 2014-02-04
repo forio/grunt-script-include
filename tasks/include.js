@@ -35,7 +35,8 @@ module.exports = function (grunt) {
                 if (!grunt.file.exists(path)) {
                     grunt.log.warn('Source file "' + path + '" not found.');
                 } else {
-                    output.push(_.compact(['<script', options.attributes, 'src="' + relativePath + '"></script>']).join(' '));
+                    var ext = getExtension(relativePath);
+                    output.push(getTag(ext, options.attributes, relativePath).join(' '));
 
                     // Copy if it's not where it's suppose to be, overwriting existing files.
                     if (!grunt.file.arePathsEquivalent(path, file.dest)) {
@@ -54,4 +55,19 @@ module.exports = function (grunt) {
         }
 
     });
+    
+    function getTag(extension, attributes, path){
+        switch(extension){
+            case 'css':
+                return _.compact(['<link', attributes, 'rel="stylesheet" href="' + path + '"/>']);
+            case 'js':
+            default:
+                return _.compact(['<script', attributes, 'src="' + path + '"></script>']);
+        }
+    }
+
+    function getExtension(filename){
+        var i = filename.lastIndexOf('.');
+        return (i < 0) ? '' : filename.substr(i + 1);
+    }
 }
